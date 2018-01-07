@@ -42,10 +42,10 @@ hooks.after.providersBooted(() => {
     this.status(200).send(blueprint(obj));
   });
 
-  Response.macro("created", function(obj) {
-    this.status(201).send(
-      blueprint(obj, obj.constructor.name + " created successfully.")
-    );
+  Response.macro("created", function(obj, message = null) {
+    let m = message ? message : obj.constructor.name + " created successfully.";
+
+    this.status(201).send(blueprint(obj, m));
   });
 
   Response.macro("updated", function(obj) {

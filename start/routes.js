@@ -16,6 +16,7 @@
 const Route = use("Route");
 
 Route.group(() => {
+  Route.post("login", "AuthController.login");
   Route.resource("users", "UserController")
     .except(["index", "create", "edit"])
     .middleware(
