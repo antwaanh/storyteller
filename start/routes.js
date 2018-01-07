@@ -28,4 +28,7 @@ Route.group(() => {
         [["users.update"], ["UpdateUser"]]
       ])
     );
+  Route.resource("stories", "StoryController")
+    .apiOnly()
+    .middleware("auth:jwt");
 }).prefix("api/v1");
