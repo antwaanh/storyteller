@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +13,18 @@
 |
 */
 
-const Route = use('Route')
+const Route = use("Route");
 
-Route.get('/', ({ request }) => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.group(() => {
+  Route.resource("users", "UserController")
+    .except(["index", "create", "edit"])
+    .middleware(
+      new Map([[["users.show", "users.update", "users.destroy"], ["auth:jwt"]]])
+    )
+    .validator(
+      new Map([
+        [["users.store"], ["StoreUser"]],
+        [["users.update"], ["UpdateUser"]]
+      ])
+    );
+}).prefix("api/v1");
