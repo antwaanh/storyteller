@@ -24,9 +24,12 @@
     "@adonisjs/ignitor": "^1.0.14",
     "@adonisjs/lucid": "^4.0.24",
     "@adonisjs/validator": "^4.0.8",
+    "@adonisjs/vow": "^1.0.13",
     "mysql": "^2.15.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sqlite3": "^3.1.13"
+  },
   "autoload": {
     "App": "./app"
   }
