@@ -22,7 +22,7 @@ class UserController {
   async update({ request, response, params }) {
     let user = await User.findOrFail(params.id);
 
-    user.username = request.input("username");
+    user.merge(request.all());
     await user.save();
 
     response.updated(user);
